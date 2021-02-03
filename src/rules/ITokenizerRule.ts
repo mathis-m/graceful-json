@@ -6,13 +6,18 @@ import {
   EndArrayToken,
   EndLabelToken,
   EndObjectToken,
+  HorizontalWhitespaceToken,
   JsonToken,
-  MaybeDecimalNumberToken, MaybeExponentialNegativeNumberToken, MaybeExponentialNumberToken,
+  MaybeDecimalNumberToken,
+  MaybeExponentialNegativeNumberToken,
+  MaybeExponentialNumberToken,
   MaybeNegativeNumberToken,
   MaybeStringToken,
   NullToken,
   NumberToken,
-  StringToken, HorizontalWhitespaceToken, VerticalWhitespaceToken
+  StringToken,
+  SymbolToken,
+  VerticalWhitespaceToken
 } from '../tokens'
 
 export interface ITokenizerRule {
@@ -31,12 +36,12 @@ export class EndLabelRule implements ITokenizerRule {
 }
 
 export class BeginObjectRule implements ITokenizerRule {
-  readonly regex: RegExp = /^{$/
+  readonly regex: RegExp = /^\{$/
   readonly type: JsonToken = BeginObjectToken
 }
 
 export class EndObjectRule implements ITokenizerRule {
-  readonly regex: RegExp = /^}$/
+  readonly regex: RegExp = /^\}$/
   readonly type: JsonToken = EndObjectToken
 }
 
@@ -96,11 +101,16 @@ export class MaybeExponentialNegativeNumberRule implements ITokenizerRule {
 }
 
 export class VerticalWhitespaceRule implements ITokenizerRule {
-  readonly regex: RegExp = /^[\r\n]$/
+  readonly regex: RegExp = /^[\r\n]+$/
   readonly type: JsonToken = VerticalWhitespaceToken
 }
 
 export class HorizontalWhitespaceRule implements ITokenizerRule {
   readonly regex: RegExp = /^[^\S\r\n]+$/
   readonly type: JsonToken = HorizontalWhitespaceToken
+}
+
+export class SymbolRule implements ITokenizerRule {
+  readonly regex: RegExp = /^\w+$/
+  readonly type: JsonToken = SymbolToken
 }

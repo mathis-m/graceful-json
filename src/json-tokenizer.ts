@@ -59,7 +59,6 @@ export class JsonTokenizer extends Transform {
   }
 
   private tokenize(data: string, nobuffer: boolean = false) {
-    const rules = this.rules
     // in case we buffered data on previous writes
     data = this.buffered + data
     this.buffered = ''

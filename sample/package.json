@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "graceful-json": "file:../graceful-json/graceful-json-0.0.0.tgz"
+    "graceful-json": "file:../graceful-json-0.0.0.tgz"
   }
 }

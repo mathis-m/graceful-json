@@ -16,6 +16,7 @@ import {
   NullRule,
   NumberRule,
   StringRule,
+  SymbolRule,
   VerticalWhitespaceRule
 } from './ITokenizerRule'
 
@@ -37,5 +38,6 @@ export const DefaultRules: ITokenizerRule[] = [
   new MaybeExponentialNumberRule(),
   new MaybeExponentialNegativeNumberRule(),
   new HorizontalWhitespaceRule(),
-  new VerticalWhitespaceRule()
+  new VerticalWhitespaceRule(),
+  new SymbolRule()
 ]

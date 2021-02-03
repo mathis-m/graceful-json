@@ -15,6 +15,7 @@ export const MaybeExponentialNumberToken = 'maybe-exponential-number'
 export const MaybeExponentialNegativeNumberToken = 'maybe-exponential-number-negative'
 export const HorizontalWhitespaceToken = 'horizontal-whitespace'
 export const VerticalWhitespaceToken = 'vertical-whitespace'
+export const SymbolToken = 'symbol'
 export type JsonToken =
   typeof CommaToken
   | typeof EndLabelToken
@@ -32,7 +33,8 @@ export type JsonToken =
   | typeof MaybeExponentialNumberToken
   | typeof MaybeExponentialNegativeNumberToken
   | typeof VerticalWhitespaceToken
-  | typeof HorizontalWhitespaceToken;
+  | typeof HorizontalWhitespaceToken
+  | typeof SymbolToken;
 
 export class TokenRange {
   constructor(public start: Position, public end: Position) {
