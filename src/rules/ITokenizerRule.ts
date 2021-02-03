@@ -51,7 +51,7 @@ export class BeginArrayRule implements ITokenizerRule {
 }
 
 export class EndArrayRule implements ITokenizerRule {
-  readonly regex: RegExp = /^\[$/
+  readonly regex: RegExp = /^\]$/
   readonly type: JsonToken = EndArrayToken
 }
 

@@ -30,7 +30,7 @@ export class JsonTokenizer {
     }
   }
 
-  private* tokenize(data: string, nobuffer: boolean = false): Generator<Token> {
+  private* tokenize(data: string, disableBuffer: boolean = false): Generator<Token> {
     // in case we buffered data on previous writes
     data = this.buffered + data
     this.buffered = ''
@@ -39,7 +39,7 @@ export class JsonTokenizer {
       if (maxIndex === 0) {
         // no match found
         throw new SyntaxError('could not tokenize ' + JSON.stringify(data))
-      } else if (maxIndex === data.length && !nobuffer) {
+      } else if (maxIndex === data.length && !disableBuffer) {
         // the whole string is matching
         this.buffered = data
       } else {
@@ -60,7 +60,7 @@ export class JsonTokenizer {
         const end = new Position(this.row, this.column)
         const token = new Token(str, type, new TokenRange(start, end))
         yield token
-        let tokens = this.tokenize(data.substring(maxIndex), nobuffer)
+        let tokens = this.tokenize(data.substring(maxIndex), disableBuffer)
         for (let otherToken of tokens) {
           yield otherToken
         }
