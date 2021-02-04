@@ -1,6 +1,5 @@
-import { Position, Range } from '../tokenizer/tokens'
+import { Range } from '../tokenizer/tokens'
 import { Constructor } from './base'
-import { JsonDocument } from '../ast'
 
 export const RangeMixin =
   <TBase extends Constructor>(Base: TBase, range: Range) =>
