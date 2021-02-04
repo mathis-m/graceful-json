@@ -36,7 +36,7 @@ export type JsonToken =
   | typeof HorizontalWhitespaceToken
   | typeof SymbolToken;
 
-export class TokenRange {
+export class Range {
   constructor(public start: Position, public end: Position) {
   }
 }
@@ -47,7 +47,7 @@ export class Position {
 }
 
 export class Token extends String {
-  constructor(public content: string, public type: JsonToken, public range: TokenRange) {
+  constructor(public content: string, public type: JsonToken, public range: Range) {
     super();
   }
   toString = () => this.content.toString();
