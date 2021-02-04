@@ -1,5 +1,5 @@
 import { DefaultRules, ITokenizerRule } from './rules'
-import { Position, Token, TokenRange } from './tokens'
+import { Position, Token, Range } from './tokens'
 
 export class JsonTokenizer {
   private column = 1
@@ -58,7 +58,7 @@ export class JsonTokenizer {
           this.column = 1
         }
         const end = new Position(this.row, this.column)
-        const token = new Token(str, type, new TokenRange(start, end))
+        const token = new Token(str, type, new Range(start, end))
         yield token
         let tokens = this.tokenize(data.substring(maxIndex), disableBuffer)
         for (let otherToken of tokens) {
