@@ -12,3 +12,4 @@ export class NodeBase {
   static toString(jsonNode: NodeBase) { return JSON.stringify(jsonNode); }
 }
 export const JsonNode = VisitorMixin(PositionMixin(NodeBase))
+export type IJsonNode = typeof JsonNode
